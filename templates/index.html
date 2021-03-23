@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Agent</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="{% static '/css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/sit.css' %}">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto">
+
+</head>
+<body>
+
+<div class="content">
+
+    <div class="content-title">
+        User agent:
+    </div>
+
+    <div class="content-info">
+        {{ user_agent }}
+    </div>
+
+    <div class="content-title">
+        IP Address:
+    </div>
+
+    <div class="content-info">
+        {{ user_ip }}
+    </div>
+
+    <div class="content-title">
+        Browser information:
+    </div>
+
+    <div class="content-browser-info">
+        <div id="JS-enabled" class="content-browser-info__attribute">
+            JavaScript Enabled:
+        </div>
+        <div id="JS-status" class="content-browser-info__status"> </div>
+
+        <div id="Cookies-enabled" class="content-browser-info__attribute">
+            Cookies Enabled:
+        </div>
+        <div id="Cookies-status" class="content-browser-info__status"> </div>
+
+        <div id="Device-Pixel-Ratio" class="content-browser-info__attribute">
+            Device Pixel Ratio:
+        </div>
+        <div id="DPR-status" class="content-browser-info__status"> </div>
+
+        <div id="Screen-Resolution" class="content-browser-info__attribute">
+            Screen Resolution:
+        </div>
+        <div id="SR-status" class="content-browser-info__status"> </div>
+
+        <div id="Browser-Window-Size" class="content-browser-info__attribute">
+            Browser Window Size:
+        </div>
+        <div id="BWR-status" class="content-browser-info__status"> </div>
+
+        <div id="Local-Time" class="content-browser-info__attribute">
+            Local Time:
+        </div>
+        <div id="LT-status" class="content-browser-info__status"> </div>
+
+        <div id="Time-Zone" class="content-browser-info__attribute">
+            Time Zone:
+        </div>
+        <div id="TZ-status" class="content-browser-info__status"> </div>
+
+</div>
+
+</div>
+
+<script>
+  function updateTime() {
+    const date = new Date()
+    document.getElementById('LT-status').innerText = date.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'});
+  }
+
+  updateTime();
+  setInterval(updateTime, 60000);
+
+  const date = new Date()
+  document.getElementById('TZ-status').innerText = (date.getTimezoneOffset() / 60).toString() + ' hours';
+
+  document.getElementById('JS-status').innerText = 'Yes';
+  document.getElementById('Cookies-status').innerText = window.navigator.cookieEnabled ? 'Yes' : 'No';
+  document.getElementById('DPR-status').innerText = window.devicePixelRatio.toString();
+  document.getElementById('SR-status').innerText = `${window.screen.width}px x ${window.screen.height}px`;
+  document.getElementById('BWR-status').innerText = `${window.innerWidth}px x ${window.innerHeight}px`;
+
+</script>
+
+</body>
+</html>

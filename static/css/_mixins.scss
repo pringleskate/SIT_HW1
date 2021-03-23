@@ -1,0 +1,44 @@
+@import "colors";
+
+// Flex - колонка
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+// Flex - строка
+@mixin flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+// Контент по центру
+@mixin content-center {
+    align-items: center;
+    justify-content: center;
+}
+
+// Стандартный текст (на вход font-weight, font-size, $line-height)
+@mixin standard-font($font-weight, $font-size, $line-height) {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: $font-weight;
+    font-size: $font-size;
+    line-height: $line-height;
+}
+
+// Круглое изображение
+@mixin circle-icon {
+    clip-path: circle();
+    object-fit: cover;
+}
+
+// Стандартная тень
+@mixin standard-shadow {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+}
+
+// Стандартное закругление всех контейнеров
+@mixin standard-border-radius {
+    border-radius: 30px;
+}
